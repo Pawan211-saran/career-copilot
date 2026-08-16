@@ -1,0 +1,7 @@
+streamlit
+fastapi
+uvicorn
+requests
+groq
+pypdf
+python-multipart
