@@ -1,12 +1,23 @@
 import os
 import io
 from fastapi import FastAPI, UploadFile, File, Form
-from dotenv import load_dotenv
-from supabase import create_client, Client
 from pypdf import PdfReader
 from groq import Groq
+from supabase import create_client, Client
 
-# Environment variables load karna
+# Safe environment loader for local & production
+try:
+    from dotenv import load_dotenv
+    load_dotenv(override=True)
+except ImportError:
+    pass
+
+SUPABASE_URL = os.getenv("SUPABASE_URL")
+SUPABASE_KEY = os.getenv("SUPABASE_KEY")
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+
+# Supabase setup
+supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 load_dotenv(override=True)
 
 SUPABASE_URL = os.getenv("SUPABASE_URL")
