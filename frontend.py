@@ -92,7 +92,7 @@ def main_app():
                 files = {"file": (uploaded_file.name, uploaded_file, "application/pdf")}
                 data = {"profile_id": str(uuid.uuid4()), "job_description": jd_text}
                 try:
-                    response = requests.post("https://career-copilot-kqsn.onrender.com", files=files, data=data)
+                    response = requests.post("https://career-copilot-kqsn.onrender.com/upload-resume", files=files, data=data)
                     if response.status_code == 200:
                         res = response.json()
                         st.balloons()
